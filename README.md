@@ -10,13 +10,7 @@ One is the Primary Region
 The other is the Disaster Recovery (DR) Region
 Both regions are active, which means they can handle traffic and serve users if one goes down.
 
-#### 2. How the User will access:
-
-A user/browser connects to a domain (website).
-The request is routed through an API Gateway and Traffic Manager, which decides where to send traffic either primary or DR region.
-Private DNS zone helps map names to the correct internal resources.
-
-#### 3. Primary Region (left side):-
+#### 2.  Primary Region (left side):-
 
 i) Virtual Network (VNet) and Subnets: They group and isolate resources securely.
 
@@ -24,12 +18,18 @@ ii) Firewall: Controls what gets in and out.
 
 iii) Web App: Runs inside an App Service Plan with 3 instances in different Availability Zones (AZ 1, AZ 2, AZ 3) to ensure high availability. This ensures zone-level redundancy within each region.
 
-iv) SQL Server & SQL Database: Also spread across 3 AZs and connected to the web app via a Private Endpoint for secure, private communication.
-
-#### 4. DR Region:-
+iv) SQL Server & SQL Database: Also spread across 3 AZs and connected to the web app via a Private Endpoint for secure, private communication
+DR Region:-
    
-It has the same setup as the Primary Region, including VNet, Subnets, Firewall Web App and SQL services with 3 instances across different AZs. It also uses Private Endpoints to connect resources.
-...
+#### 3. DR Region:-
+   
+It has the same setup as the Primary Region, including VNet, Subnets, Firewall Web App and SQL services with 3 instances across different AZs. It also uses Private Endpoints to connect resources. 
+
+#### 4. How the User will access:
+
+A user/browser connects to a domain (website).
+The request is routed through an API Gateway and Traffic Manager, which decides where to send traffic either primary or DR region.
+Private DNS zone helps map names to the correct internal resources.
 
 
 ## Overview of DevOps architecture :
@@ -68,6 +68,7 @@ App Service Plan – hosting the web application
 Web Service – the actual deployed web app
 
 SQL Database – backend database for data storage purpose
+
 
 
 
